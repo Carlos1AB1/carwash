@@ -1,0 +1,283 @@
+{
+  "info": {
+    "_postman_id": "b5e2e3c4-5f6d-4a2e-8b3c-9d2e1f3c4b5a",
+    "name": "Car Wash Management System",
+    "description": "API endpoints for the Car Wash Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Vehicles",
+      "item": [
+        {
+          "name": "Register Vehicle",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/vehicles",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "vehicles"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"plate_number\": \"ABC123\",\n    \"vehicle_type_id\": 1,\n    \"client_name\": \"John Doe\",\n    \"client_phone\": \"+1234567890\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Vehicle by Plate",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/api/vehicles/ABC123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "vehicles", "ABC123"]
+            }
+          }
+        },
+        {
+          "name": "Get All Vehicles",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/api/vehicles",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "vehicles"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Services",
+      "item": [
+        {
+          "name": "Create Service",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/services",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "services"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"vehicle_id\": 1,\n    \"employee_id\": 1,\n    \"service_type_id\": 1,\n    \"notes\": \"Regular wash with extra attention to wheels\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Pending Services",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/api/services/pending",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "services", "pending"]
+            }
+          }
+        },
+        {
+          "name": "Update Service Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/services/1/status",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "services", "1", "status"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"status\": \"completed\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Employees",
+      "item": [
+        {
+          "name": "Create Employee",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/employees",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "employees"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Jane Smith\",\n    \"position\": \"Washer\",\n    \"shift\": \"morning\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Employee Workload",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/api/employees/1/workload",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "employees", "1", "workload"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Inventory",
+      "item": [
+        {
+          "name": "Add Supply",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/inventory",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "inventory"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Car Shampoo\",\n    \"description\": \"Premium car washing shampoo\",\n    \"current_stock\": 100,\n    \"minimum_stock\": 20,\n    \"unit\": \"liters\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Low Stock Supplies",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/api/inventory/low-stock",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "inventory", "low-stock"]
+            }
+          }
+        },
+        {
+          "name": "Record Used Supplies",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/inventory/use",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "inventory", "use"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"service_id\": 1,\n    \"supply_id\": 1,\n    \"quantity\": 0.5\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Daily Income Report",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/api/reports/daily-income?date=2024-03-28",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "reports", "daily-income"],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2024-03-28"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Average Service Time",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/api/reports/average-service-time",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "reports", "average-service-time"]
+            }
+          }
+        },
+        {
+          "name": "Vehicle Service History",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/api/reports/vehicle-history/ABC123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "reports", "vehicle-history", "ABC123"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
